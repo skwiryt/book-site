@@ -5,9 +5,9 @@
  }
 
 .bookBox {
-  width: 100%;
-  position: relative;
+  width: 100%;  
   .bookImage {
+    position: relative;
     height: 40vw;
     border: 1px solid $color-dark;
     overflow: hidden;
@@ -27,24 +27,29 @@
     @media (min-width: 768px) {    
       height: 28vw;    
     }
+    .addButton {
+      position: absolute;
+      bottom: 3 * $base-size;
+      left: 50%;
+      transform: translate(-50%);
+      width: 70%;
+      max-width: 350px;
+      min-width: 150px;
+      padding: 10px;
+      cursor: pointer;
+      text-align: center;
+      color: $color-sub-background;
+      background: rgb(0, 0, 0);
+      visibility: hidden;
+      opacity: 0;
+      @extend %transition-params;
+      &:hover {
+        opacity: 1;
+      }
+    }
+
   }
-  .addButton {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    width: 70%;
-    max-width: 350px;
-    min-width: 200px;
-    padding: 10px;
-    cursor: pointer;
-    text-align: center;
-    color: $color-sub-background;
-    background: rgb(0, 0, 0);
-    visibility: hidden;
-    opacity: 0;
-    @extend %transition-params;
-  }
+  
 
   &:hover img {
     transform: scale(120%);
@@ -54,7 +59,7 @@
   }
   &:hover .addButton {
     visibility: visible;
-    opacity: 1;
+    opacity: 0.85;
   }
  }
  

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { API_URL } from '../config';
-import { IAppState } from '../App';
+import { IAppState } from './initialState';
 import { AnyAction } from 'redux';
 import { initialState } from './initialState';
 import { AppDispatch } from './store';

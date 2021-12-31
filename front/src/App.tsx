@@ -3,9 +3,9 @@ import { Provider } from 'react-redux';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { store } from './redux/store';
 import Home from './components/views/Home/HomeContainer';
-import Cart from './components/views/Cart/Cart';
+import Cart from './components/views/Cart/CartContainer';
 import MainLayout from './components/layout/MainLayout/MainLayout';
-
+/*
 export interface IAppState {
   products: {
     data: {
@@ -25,7 +25,7 @@ export interface IAppState {
     },    
   }
 }
-
+*/
 function App() {
   return (
     <Provider store={store}>

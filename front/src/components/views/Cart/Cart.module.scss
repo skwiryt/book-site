@@ -1,2 +1,28 @@
 @import '../../../styles/settings.scss';
 
+
+.root {
+  margin: 3 * $base-size auto;
+  width: 80%;
+  @media (min-width: 1200px) {    
+    width: 900px;    
+  }
+ }
+ .pageHeader {
+  font-size: 2 * $base-size;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 2 * $base-size;
+
+}
+.orderButton {
+  margin: 0 auto;
+  width: 70%;
+  max-width: 350px;
+  min-width: 200px;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  color: $color-sub-background;
+  background: black;
+}
