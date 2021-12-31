@@ -1,0 +1,46 @@
+@import "./settings.scss";
+@import "./normalize.scss";
+// @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+// @import "~bootstrap/scss/bootstrap.scss";
+// powyższe oba działają w trybie dev ale build nie wychodzi
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: $color-main-background;
+  font-family: $font-text;
+  font-size: $font-base-size;
+  color: $color-dark;
+  overflow-y: scroll;
+}
+
+a, a:hover, a:visited {
+  color: $color-dark;
+  text-decoration: none;
+}
+a:hover {
+  font-weight: bolder;
+}
+.alert {  
+  padding: 3 * $base-size;
+  text-align: center;
+  background: $color-sub-background;
+  &.successAlert {    
+    border: 1px solid $color-dark;
+  }
+  &.errorAlert {
+    border: 1px solid red;
+    color: red;
+  }
+}
+a.active {
+  color: $color-light;
+  cursor: inherit;
+  &:hover {
+    font-weight: normal;
+  }
+}
