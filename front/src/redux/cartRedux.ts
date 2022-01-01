@@ -1,13 +1,15 @@
 import axios from 'axios';
 import { AnyAction } from 'redux';
 import { ICartLine } from '../components/views/Home/Home';
+import { IOrder } from '../components/views/OrderForm/OrderForm';
 import { API_URL } from '../config';
 import { IAppState, initialState } from './initialState';
+import { AppDispatch } from './store';
 
 type Cart = IAppState['cart'];
 
 /* selectors */
-//export const getRequest = ({cart}, type) => cart.requests[type];
+export const getRequest = ({cart}: IAppState, type: string) => cart.requests[type];
 export const getCartLines = ({cart}: IAppState) => cart.lines;
 
 /* action name creator */
@@ -20,7 +22,7 @@ const REQUEST_SUCCESS = createActionName('REQUEST_SUCCESS');
 const REQUEST_ERROR = createActionName('REQUEST_ERROR');
 
 const ADD_LINE = createActionName('ADD_LINE');
-const REMOVE_LINE = createActionName('REMOVE_LINE');
+const EMPTY_CART = createActionName('EMPTY_CART');
 
 /* action creators */
 export const requestStart = (payload: string) => ({ payload, type: REQUEST_START });
@@ -28,40 +30,28 @@ export const requestSuccess = (payload: string) => ({ payload, type: REQUEST_SUC
 export const requestError = (payload: string) => ({ payload, type: REQUEST_ERROR });
 
 export const addLine = (payload: ICartLine) => ({ payload, type: ADD_LINE });
-export const removeLine = (payload: number) => ({ payload, type: REMOVE_LINE }); // payload = book.id
-
+export const emptyCart = () => ({type: EMPTY_CART});
 
 /* thunk creators */
-/*
-export const sendOrderRequest = (order) => {
+
+export const sendOrderRequest = (order: IOrder) => {
   
-  return async (dispatch) => {
-    console.log('order.lines: ', order.lines);
-    const {lines, name, email, userId} = order;
-    const data = {lines, name, email, userId};
+  return async (dispatch: AppDispatch) => {
     dispatch(requestStart('SEND_ORDER'));
     try {
-      const response = await axios.post(API_URL + '/orders', data);
+      const response = await axios.post(API_URL + '/order', order);
       dispatch(requestSuccess('SEND_ORDER'));
       console.log('response.data: ', response.data);
-
-      // mark agent as active
-      localStorage.setItem(`TF_activeAgent`, JSON.stringify(true));
-      dispatch(markAgent(true));
-
       // cancel cart
-      localStorage.setItem(`TF_cartLines`, JSON.stringify([]));
-      dispatch(loadCart([]));
-
+      dispatch(emptyCart());
 
     } catch(err) {      
       console.log('err: ', err);
       dispatch(requestError('SEND_ORDER'));
-    }
-        
+    }        
   };
 };
-*/
+
 /* reducer */
 export const reducer = (statePart: Cart = initialState.cart, action: AnyAction) => {
   switch (action.type) {    
@@ -71,11 +61,8 @@ export const reducer = (statePart: Cart = initialState.cart, action: AnyAction) 
         lines: [...statePart.lines, action.payload],
       };
     }    
-    case REMOVE_LINE :
-      return {
-        ...statePart,
-        lines: statePart.lines.filter(l => l.id !== action.payload),
-      };    
+    case EMPTY_CART :
+      return initialState.cart;
     case REQUEST_START : {
       return {
         ...statePart, requests: {...statePart.requests, [action.payload]: {active: true, error: false}},

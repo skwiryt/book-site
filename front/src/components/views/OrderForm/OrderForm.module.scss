@@ -1,0 +1,65 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  margin: 3 * $base-size auto;
+  width: 100%;
+  @media (min-width: 576px) {
+    width: 60%;
+  }
+}
+.pageHeader {
+  font-size: 2 * $base-size;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 2 * $base-size;
+
+}
+.contactHeader {
+  font-size: 1.5 * $base-size;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 2 * $base-size;
+
+}
+
+.tableHeader {
+  color: $color-light;
+  padding-bottom: $base-size;
+}
+.note {
+  font-style: italic;
+  font-size: smaller;
+}
+.total {
+  font-size: 2 * $base-size;
+  text-align: right;
+  padding: $base-size 0 3 * $base-size 0;
+  border-bottom: 1px solid $color-dark;
+}
+.contact {
+  
+  margin: 0 auto;
+  padding: 3 * $base-size;  
+  width: 70%;
+  @media (min-width: 576px) {
+    width: 100%;
+  }
+  @media (min-width: 992px) {
+    width: 90%;
+  }
+  @media (min-width: 1200px) {
+    width: 70%;
+  } 
+  
+  button {
+    width: 100%;
+    max-width: 350px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    color: $color-sub-background;
+    background: black;
+    border: 0;
+    
+  }
+}

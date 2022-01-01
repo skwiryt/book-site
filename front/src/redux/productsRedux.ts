@@ -31,15 +31,15 @@ export const loadProducts = (payload: Products['data']) => ({ payload, type: LOA
 
 /* thunk creators */
 export const loadProductsRequest = () => {
-  console.log('loadProductsRequest thunk is called');  
+  //console.log('loadProductsRequest thunk is called');  
   return async (dispatch: AppDispatch) => {    
-    console.log('dispatch for fetch fired by Thunk');
+    //console.log('dispatch for fetch fired by Thunk');
     dispatch(requestStart('LOAD_PRODUCTS'));
     try {
       const response = await axios.get(API_URL + '/book');
       dispatch(loadProducts(response.data.data));
       dispatch(requestSuccess('LOAD_PRODUCTS'));
-      console.log('response.data: ', response.data);
+      //console.log('response.data: ', response.data);
     } catch(err) {
       dispatch(requestError('LOAD_PRODUCTS'));
     }

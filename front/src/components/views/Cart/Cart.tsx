@@ -20,7 +20,7 @@ class Cart extends React.Component<CartProps>  {
         {cartLines.map((cartLine, i) => (
           <CartLine lineNb={i + 1} key={cartLine.id} cartLine={cartLine}/>
         ))}
-        { isContent && <Link to="/orderform"><div className={styles.orderButton}>{`DALEJ (Suma: ${cartValue/100} zł)`}</div></Link>}
+        { isContent && <Link to="/order"><div className={styles.orderButton}>{`DALEJ (Suma: ${cartValue/100} zł)`}</div></Link>}
         { !isContent && <div className={styles.orderButton}>KOSZYK JEST PUSTY</div>}   
       </div>
     );

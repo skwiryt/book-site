@@ -13,7 +13,7 @@ const mapStateToProps = (state: IAppState) => ({
   request: getRequest(state, 'LOAD_PRODUCTS'),
 });
 // const mapDispatchToProps = (dispatch: ThunkDispatch<RootState,undefined, AnyAction>) => ({
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: any ) => ({
   loadProducts: () => dispatch(loadProductsRequest()),
   addToCart: (line: ICartLine) => dispatch(addLine(line)),
 });

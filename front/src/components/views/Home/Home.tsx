@@ -22,7 +22,7 @@ type HomeProps = {
 type HomeState = {
   images: number,
 };
-class Home extends React.Component<HomeProps> {
+class Home extends React.Component<HomeProps, HomeState> {
   state: HomeState = {
     images: 0,
   }
@@ -46,7 +46,7 @@ class Home extends React.Component<HomeProps> {
     const imagesLoaded = images === books.length;
     return ( 
       <div className={styles.root}>
-        { request.error && <div className="alert errorAlert" role="alert" > Request Error.</div> }
+        { request.error && <div className="alert errorAlert" role="alert" >Request Error.</div> }
         { (request.active && !request.error) && <div className="d-flex justify-content-center"><div className="spinner-border text-secondary" role="status"><span className="sr-only">Loading...</span></div></div> }
         { !request.active && !request.error && (
           <div className="row gy-4 gx-3 g-md-5">
